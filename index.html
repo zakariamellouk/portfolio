@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zakaria Mellouk — Portfolio IT</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #030712;
+  --bg2: #0d1117;
+  --card: #0f1724;
+  --card2: #131c2e;
+  --border: rgba(148,163,184,0.1);
+  --border2: rgba(148,163,184,0.06);
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --muted2: #94a3b8;
+  --blue: #3b82f6;
+  --blue-light: #60a5fa;
+  --cyan: #06b6d4;
+  --purple: #8b5cf6;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── BACKGROUND ── */
+.bg-mesh {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 110% -10%, rgba(59,130,246,.13) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at -20% 60%, rgba(139,92,246,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 110%, rgba(6,182,212,.07) 0%, transparent 50%);
+}
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(3,7,18,.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+.nav-brand {
+  font-family: var(--font-head);
+  font-weight: 800; font-size: 18px;
+  background: linear-gradient(135deg, #fff 30%, var(--blue-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+.nav-links { display: flex; gap: 6px; }
+.nav-links a {
+  font-size: 13px; color: var(--muted2);
+  text-decoration: none; padding: 6px 14px;
+  border-radius: 8px; transition: all .2s;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,.07); }
+.nav-cta {
+  font-size: 13px; font-weight: 600;
+  color: #fff; text-decoration: none;
+  padding: 8px 18px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  transition: opacity .2s, transform .2s;
+}
+.nav-cta:hover { opacity: .9; transform: translateY(-1px); }
+
+/* ── LAYOUT ── */
+.wrap { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+/* ── HERO ── */
+.hero { padding: 130px 0 90px; }
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 500; letter-spacing: .06em;
+  color: var(--blue-light);
+  border: 1px solid rgba(96,165,250,.25);
+  background: rgba(96,165,250,.08);
+  padding: 6px 16px; border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:.2} }
+
+h1 {
+  font-family: var(--font-head);
+  font-size: clamp(48px, 7.5vw, 96px);
+  font-weight: 800; line-height: .95;
+  letter-spacing: -0.035em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+h1 .ghost {
+  display: block;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,.3);
+  color: transparent;
+}
+.hero-desc {
+  font-size: 16px; color: var(--muted2);
+  max-width: 520px; margin: 28px 0 36px;
+  line-height: 1.75;
+}
+.hero-desc strong { color: var(--blue-light); font-weight: 600; }
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  text-decoration: none; padding: 12px 24px; border-radius: 12px;
+  border: none; cursor: pointer; transition: all .2s;
+}
+.btn-blue {
+  background: linear-gradient(135deg, var(--blue), #2563eb);
+  color: #fff; box-shadow: 0 0 24px rgba(59,130,246,.25);
+}
+.btn-blue:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(59,130,246,.4); }
+.btn-ghost {
+  background: rgba(255,255,255,.05); color: var(--muted2);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.09); color: #fff; }
+
+.hero-stats {
+  display: flex; gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  background: var(--card);
+  max-width: 560px;
+}
+.stat {
+  flex: 1; padding: 20px 24px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: var(--font-head);
+  font-size: 28px; font-weight: 800; color: #fff;
+  line-height: 1;
+}
+.stat-n span { color: var(--blue-light); }
+.stat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-top: 5px; }
+
+/* ── SECTIONS ── */
+section { padding: 88px 0; }
+.sec-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--blue-light); margin-bottom: 12px;
+}
+.sec-label::before { content:''; width:20px; height:1px; background:var(--blue-light); }
+h2 {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800; letter-spacing: -0.025em; color: #fff;
+  margin-bottom: 48px;
+}
+.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ── SKILL CARDS ── */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px;
+  position: relative; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.skill-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--bar-color, var(--blue));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .35s ease;
+}
+.skill-card:hover { border-color: rgba(96,165,250,.25); transform: translateY(-4px); }
+.skill-card:hover::after { transform: scaleX(1); }
+.skill-card.blue  { --bar-color: var(--blue); }
+.skill-card.cyan  { --bar-color: var(--cyan); }
+.skill-card.purple{ --bar-color: var(--purple); }
+.skill-card.green { --bar-color: var(--green); }
+.skill-card.amber { --bar-color: var(--amber); }
+
+.skill-icon { font-size: 24px; margin-bottom: 14px; display: block; }
+.skill-name {
+  font-family: var(--font-head); font-size: 15px; font-weight: 700;
+  color: #fff; margin-bottom: 8px;
+}
+.skill-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font-size: 11px; padding: 3px 10px; border-radius: 100px;
+  border: 1px solid var(--border); color: var(--muted2);
+  background: rgba(255,255,255,.03);
+}
+.chip.b { border-color: rgba(59,130,246,.35); color: #93c5fd; background: rgba(59,130,246,.08); }
+.chip.c { border-color: rgba(6,182,212,.35); color: #67e8f9; background: rgba(6,182,212,.08); }
+.chip.p { border-color: rgba(139,92,246,.35); color: #c4b5fd; background: rgba(139,92,246,.08); }
+.chip.g { border-color: rgba(16,185,129,.35); color: #6ee7b7; background: rgba(16,185,129,.08); }
+.chip.a { border-color: rgba(245,158,11,.35); color: #fcd34d; background: rgba(245,158,11,.08); }
+
+/* ── CCNA SPOTLIGHT ── */
+.ccna-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ccna-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ccna-card {
+  border-radius: 20px; padding: 32px;
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(59,130,246,.2);
+  background: linear-gradient(135deg, rgba(59,130,246,.06) 0%, rgba(139,92,246,.06) 100%);
+  transition: border-color .3s, transform .3s;
+}
+.ccna-card:hover { border-color: rgba(59,130,246,.45); transform: translateY(-4px); }
+.ccna-card::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(ellipse 60% 60% at 90% 10%, rgba(59,130,246,.12), transparent);
+  pointer-events: none;
+}
+.ccna-card > * { position: relative; z-index: 1; }
+.ccna-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: #fbbf24;
+  border: 1px solid rgba(251,191,36,.3);
+  background: rgba(251,191,36,.1);
+  padding: 5px 14px; border-radius: 100px;
+  margin-bottom: 16px;
+}
+.ccna-title {
+  font-family: var(--font-head);
+  font-size: 20px; font-weight: 800; color: #fff;
+  margin-bottom: 6px;
+}
+.ccna-sub { font-size: 13px; color: var(--muted2); margin-bottom: 20px; }
+.ccna-skills { display: flex; flex-wrap: wrap; gap: 7px; }
+.ccna-chip {
+  font-size: 11px; padding: 4px 12px; border-radius: 100px;
+  border: 1px solid rgba(96,165,250,.2); color: #93c5fd;
+  background: rgba(59,130,246,.07);
+}
+.cisco-logo {
+  position: absolute; top: 20px; right: 24px; z-index: 1;
+  font-family: var(--font-head); font-size: 11px; font-weight: 700;
+  color: rgba(255,255,255,.2); letter-spacing: .12em;
+}
+
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 6px; top: 10px; bottom: 10px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--blue-light), rgba(59,130,246,.1));
+}
+.tl-item { position: relative; margin-bottom: 36px; }
+.tl-item::before {
+  content: '';
+  position: absolute; left: -25px; top: 10px;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--blue-light);
+  box-shadow: 0 0 0 3px rgba(96,165,250,.15), 0 0 16px rgba(96,165,250,.3);
+}
+.tl-year {
+  font-size: 11px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--cyan); margin-bottom: 6px;
+}
+.tl-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 24px;
+  transition: border-color .2s;
+}
+.tl-card:hover { border-color: rgba(96,165,250,.2); }
+.tl-title {
+  font-family: var(--font-head); font-size: 16px; font-weight: 700;
+  color: #fff; margin-bottom: 4px;
+}
+.tl-company { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.tl-list { list-style: none; }
+.tl-list li {
+  font-size: 13px; color: var(--muted2); padding: 3px 0 3px 18px;
+  position: relative;
+}
+.tl-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue-light); font-size: 11px; top: 4px; }
+
+/* ── FORMATION ── */
+.edu-row {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 20px; align-items: start;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 24px;
+  margin-bottom: 12px;
+  transition: border-color .2s;
+}
+.edu-row:hover { border-color: rgba(139,92,246,.25); }
+.edu-yr {
+  font-family: var(--font-head); font-size: 12px; font-weight: 700;
+  color: var(--purple); text-align: center;
+  padding: 10px 8px; border-radius: 10px;
+  border: 1px solid rgba(139,92,246,.25);
+  background: rgba(139,92,246,.07);
+  line-height: 1.3;
+}
+.edu-name { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.edu-info { font-size: 12px; color: var(--muted); }
+
+/* ── LANGUES + PERMIS ── */
+.extras-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+.extra-pill {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 14px 20px;
+}
+.extra-em { font-size: 22px; }
+.extra-name { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: #fff; }
+.extra-sub { font-size: 11px; color: var(--muted); }
+
+/* ── CONTACT ── */
+.contact-wrap {
+  background: linear-gradient(135deg, rgba(59,130,246,.07), rgba(139,92,246,.07));
+  border: 1px solid rgba(59,130,246,.18);
+  border-radius: 24px; padding: 48px;
+}
+.contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 32px; }
+.contact-item {
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
+  text-decoration: none; color: inherit;
+  transition: all .2s;
+}
+.contact-item:hover { border-color: rgba(96,165,250,.3); background: rgba(255,255,255,.07); }
+.ci-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; }
+.ci-val { font-size: 14px; font-weight: 600; color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 32px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--muted);
+}
+footer span { color: var(--blue-light); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .ccna-grid, .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .wrap { padding: 0 16px; }
+  h1 { font-size: 48px; }
+  .hero { padding: 100px 0 64px; }
+}
+
+/* ── FADE IN ── */
+.fi { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+.fi.show { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div class="bg-grid"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">ZM_</div>
+  <div class="nav-links">
+    <a href="#competences">Compétences</a>
+    <a href="#certifications">CCNA</a>
+    <a href="#experiences">Expériences</a>
+    <a href="#formation">Formation</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="mailto:z.mellouk@lprs.fr" class="nav-cta">✉ Me contacter</a>
+</nav>
+
+<!-- HERO -->
+<div class="wrap">
+  <section class="hero fi">
+    <div class="hero-pill">
+      <span class="hero-pill-dot"></span>
+      Disponible · BTS SIO SISR · Certifié CCNA 1 &amp; 2
+    </div>
+    <h1>
+      Mellouk<br>
+      <span class="ghost">Zakaria</span>
+    </h1>
+    <p class="hero-desc">
+      Technicien IT en formation, spécialisé en <strong>réseaux, systèmes et infrastructure</strong>.<br>
+      Certifié Cisco CCNA 1 &amp; 2 · 5 stages · Expérience terrain depuis 2021.
+    </p>
+    <div class="hero-btns">
+      <a href="mailto:z.mellouk@lprs.fr" class="btn btn-blue">✉ Me contacter</a>
+      <a href="#experiences" class="btn btn-ghost">↓ Mon parcours</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-n">5<span>+</span></div>
+        <div class="stat-l">Stages</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">2<span>×</span></div>
+        <div class="stat-l">CCNA Cisco</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">4<span>+</span></div>
+        <div class="stat-l">Ans terrain</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">B<span>2</span></div>
+        <div class="stat-l">Anglais</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="divider"/>
+
+<!-- COMPÉTENCES -->
+<div class="wrap">
+  <section id="competences" class="fi">
+    <div class="sec-label">01 · Compétences techniques</div>
+    <h2>Ce que je maîtrise</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card blue">
+        <span class="skill-icon">🖥️</span>
+        <div class="skill-name">Systèmes d'exploitation</div>
+        <div class="skill-desc">Administration Windows Server et Linux au niveau professionnel.</div>
+        <div class="chips">
+          <span class="chip b">Windows 10</span>
+          <span class="chip b">Server 2019/2022</span>
+          <span class="chip b">Active Directory</span>
+          <span class="chip b">DNS / DHCP</span>
+          <span class="chip b">Debian 11/12</span>
+          <span class="chip">NTFS · Registre</span>
+          <span class="chip">Commandes DOS</span>
+        </div>
+      </div>
+
+      <div class="skill-card cyan">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-name">Réseaux & Infrastructure</div>
+        <div class="skill-desc">Configuration, routage, VLAN et sécurité réseau en environnement pro.</div>
+        <div class="chips">
+          <span class="chip c">Adressage IP</span>
+          <span class="chip c">VLAN / Inter-VLAN</span>
+          <span class="chip c">Switchs Cisco/Netgear</span>
+          <span class="chip c">Routage OSPF</span>
+          <span class="chip c">Firewall</span>
+          <span class="chip c">Wi-Fi (Asus, Cisco)</span>
+          <span class="chip">ADSL / Routeurs</span>
+        </div>
+      </div>
+
+      <div class="skill-card green">
+        <span class="skill-icon">🏆</span>
+        <div class="skill-name">CCNA 1 — Réseaux (Cisco)</div>
+        <div class="skill-desc">Fondamentaux des réseaux, protocoles et communication entre équipements.</div>
+        <div class="chips">
+          <span class="chip g">Modèle OSI / TCP-IP</span>
+          <span class="chip g">Adressage IPv4 / IPv6</span>
+          <span class="chip g">Subnetting</span>
+          <span class="chip g">Ethernet / LAN</span>
+          <span class="chip g">Câblage structuré</span>
+          <span class="chip g">Protocoles réseau</span>
+        </div>
+      </div>
+
+      <div class="skill-card amber">
+        <span class="skill-icon">🥇</span>
+        <div class="skill-name">CCNA 2 — Switching & Routing (Cisco)</div>
+        <div class="skill-desc">Administration avancée des switchs, routage dynamique et Wi-Fi.</div>
+        <div class="chips">
+          <span class="chip a">VLANs / Trunking</span>
+          <span class="chip a">STP / RSTP</span>
+          <span class="chip a">Routage inter-VLAN</span>
+          <span class="chip a">OSPF</span>
+          <span class="chip a">EtherChannel</span>
+          <span class="chip a">WLAN / Wi-Fi</span>
+          <span class="chip a">ACLs</span>
+        </div>
+      </div>
+
+      <div class="skill-card purple">
+        <span class="skill-icon">⚙️</span>
+        <div class="skill-name">Virtualisation & Support</div>
+        <div class="skill-desc">Déploiement d'environnements virtuels et support utilisateur.</div>
+        <div class="chips">
+          <span class="chip p">Hyper-V</span>
+          <span class="chip p">TeamViewer</span>
+          <span class="chip p">Hotline IT</span>
+          <span class="chip">PowerPoint / Excel</span>
+          <span class="chip">Teams / Outlook</span>
+        </div>
+      </div>
+
+      <div class="skill-card blue">
+        <span class="skill-icon">🔧</span>
+        <div class="skill-name">Matériel & Électronique</div>
+        <div class="skill-desc">Interventions physiques sur postes, baies et circuits électroniques.</div>
+        <div class="chips">
+          <span class="chip b">Montage / Démontage PC</span>
+          <span class="chip b">Brassage de baie</span>
+          <span class="chip b">Câblage RJ45</span>
+          <span class="chip">Circuits AC/DC</span>
+          <span class="chip">Mesures électriques</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<hr class="divider"/>
+
+<!-- CCNA SPOTLIGHT -->
+<section id="certifications" class="ccna-section">
+  <div class="wrap">
+    <div style="padding: 88px 0" class="fi">
+      <div class="sec-label">02 · Certifications Cisco</div>
+      <h2>Certifié CCNA 1 &amp; 2</h2>
+      <div class="ccna-grid">
+
+        <div class="ccna-card">
+          <div class="cisco-logo">CISCO</div>
+          <div class="ccna-badge">✦ Certifié</div>
+          <div class="ccna-title">CCNA 1 · Introduction to Networks</div>
+          <div class="ccna-sub">Cisco Networking Academy — Fondamentaux complets des réseaux informatiques.</div>
+          <div class="ccna-skills">
+            <span class="ccna-chip">Modèle OSI</span>
+            <span class="ccna-chip">TCP/IP</span>
+            <span class="ccna-chip">IPv4 & IPv6</span>
+            <span class="ccna-chip">Subnetting</span>
+            <span class="ccna-chip">Ethernet</span>
+            <span class="ccna-chip">Câblage LAN</span>
+          </div>
+        </div>
+
+        <div class="ccna-card">
+          <div class="cisco-logo">CISCO</div>
+          <div class="ccna-badge">✦ Certifié</div>
+          <div class="ccna-title">CCNA 2 · Switching, Routing & Wireless</div>
+          <div class="ccna-sub">Cisco Networking Academy — Configuration avancée d'infrastructures réseau.</div>
+          <div class="ccna-skills">
+            <span class="ccna-chip">VLANs & Trunking</span>
+            <span class="ccna-chip">STP</span>
+            <span class="ccna-chip">OSPF</span>
+            <span class="ccna-chip">Inter-VLAN</span>
+            <span class="ccna-chip">EtherChannel</span>
+            <span class="ccna-chip">WLAN</span>
+            <span class="ccna-chip">ACLs</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPÉRIENCES -->
+<div class="wrap">
+  <section id="experiences" class="fi">
+    <div class="sec-label">03 · Expérience professionnelle</div>
+    <h2>Terrain depuis 2019</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-year">2025</div>
+        <div class="tl-card">
+          <div class="tl-title">Stage — Technicien Réseau</div>
+          <div class="tl-company">CBKI Telecom · Toulouse</div>
+          <ul class="tl-list">
+            <li>Préparation et déploiement de postes informatiques</li>
+            <li>Support informatique utilisateurs</li>
+            <li>Configuration de switchs (Nom, VLAN, Ports)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2023</div>
+        <div class="tl-card">
+          <div class="tl-title">Stage ERASMUS+ — Électronique</div>
+          <div class="tl-company">Université de Malte</div>
+          <ul class="tl-list">
+            <li>Conversion courant alternatif → courant continu</li>
+            <li>Conception et réalisation de circuits électriques</li>
+            <li>Calculs de mesures et vérifications expérimentales</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2022</div>
+        <div class="tl-card">
+          <div class="tl-title">Technicien Support IT</div>
+          <div class="tl-company">Mairie de Stains — Service Informatique</div>
+          <ul class="tl-list">
+            <li>Hotline : support téléphonique et prise en main à distance via TeamViewer</li>
+            <li>Configuration de switchs et paramétrage de VLANs</li>
+            <li>Réaménagement complet d'une salle informatique</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2021</div>
+        <div class="tl-card">
+          <div class="tl-title">Technicien Informatique</div>
+          <div class="tl-company">Mairie de Stains — Service Informatique</div>
+          <ul class="tl-list">
+            <li>Préparation de postes informatiques</li>
+            <li>Brassage de baie, remplacement de câbles RJ45</li>
+            <li>Interventions réseaux terrain dans la ville de Stains</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <div class="tl-card">
+          <div class="tl-title">Stage de 3ème</div>
+          <div class="tl-company">Collège Maternelle Joliot-Curie · Dugny</div>
+          <ul class="tl-list">
+            <li>Encadrement des élèves durant les temps libres</li>
+            <li>Aide à la préparation pédagogique avec l'enseignant</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<hr class="divider"/>
+
+<!-- FORMATION -->
+<div class="wrap">
+  <section id="formation" class="fi">
+    <div class="sec-label">04 · Formation</div>
+    <h2>Parcours académique</h2>
+
+    <div class="edu-row">
+      <div class="edu-yr">2024<br>–<br>2026</div>
+      <div>
+        <div class="edu-name">BTS SIO — option SISR (Réseau)</div>
+        <div class="edu-info">Lycée Robert Schuman, Dugny · Infrastructures, réseaux, administration systèmes, virtualisation</div>
+      </div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-yr">2024</div>
+      <div>
+        <div class="edu-name">Bac PRO SN — Systèmes Numériques option RISC</div>
+        <div class="edu-info">Lycée Robert Schuman, Dugny · Systèmes numériques, réseaux, environnement professionnel IT</div>
+      </div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-yr">2020</div>
+      <div>
+        <div class="edu-name">Brevet des collèges — Mention bien</div>
+        <div class="edu-info">Solides bases générales, obtenu avec mention</div>
+      </div>
+    </div>
+
+    <div class="extras-row">
+      <div class="extra-pill">
+        <span class="extra-em">🇫🇷</span>
+        <div><div class="extra-name">Français</div><div class="extra-sub">Langue maternelle</div></div>
+      </div>
+      <div class="extra-pill">
+        <span class="extra-em">🇬🇧</span>
+        <div><div class="extra-name">Anglais</div><div class="extra-sub">Niveau B2</div></div>
+      </div>
+      <div class="extra-pill">
+        <span class="extra-em">🚗</span>
+        <div><div class="extra-name">Permis B</div><div class="extra-sub">Obtenu en 2024</div></div>
+      </div>
+      <div class="extra-pill">
+        <span class="extra-em">🥊</span>
+        <div><div class="extra-name">Sport</div><div class="extra-sub">MMA · Lutte · Football</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="wrap">
+  <section id="contact" class="fi">
+    <div class="contact-wrap">
+      <div class="sec-label">05 · Contact</div>
+      <h2 style="margin-bottom:8px">Travaillons ensemble</h2>
+      <p style="font-size:14px;color:var(--muted2);max-width:480px">
+        Je recherche une alternance ou des opportunités en réseaux et infrastructure IT.
+        N'hésitez pas à me contacter.
+      </p>
+      <div class="contact-grid">
+        <a href="tel:0625833438" class="contact-item">
+          <div class="ci-label">📱 Téléphone</div>
+          <div class="ci-val">06 25 83 34 38</div>
+        </a>
+        <a href="mailto:z.mellouk@lprs.fr" class="contact-item">
+          <div class="ci-label">✉ Email</div>
+          <div class="ci-val">z.mellouk@lprs.fr</div>
+        </a>
+        <div class="contact-item">
+          <div class="ci-label">📍 Localisation</div>
+          <div class="ci-val">Dugny, Île-de-France</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  Portfolio de <span>Zakaria Mellouk</span> · BTS SIO SISR · Certifié <span>CCNA 1 &amp; 2</span> · 2025
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
