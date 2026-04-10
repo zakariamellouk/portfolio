@@ -362,9 +362,172 @@ footer {
 }
 footer span { color: var(--blue-light); }
 
+/* ── TABLEAU DE SYNTHESE ── */
+.synthese-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.synthese-header {
+  background: linear-gradient(135deg, rgba(59,130,246,.08), rgba(139,92,246,.08));
+  border: 1px solid rgba(59,130,246,.2);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+}
+.synthese-header-left {}
+.synthese-header-title {
+  font-family: var(--font-head);
+  font-size: 13px; font-weight: 700;
+  color: var(--muted2); letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.synthese-header-name {
+  font-family: var(--font-head);
+  font-size: 22px; font-weight: 800; color: #fff;
+  margin-bottom: 2px;
+}
+.synthese-header-info { font-size: 13px; color: var(--muted); }
+.synthese-header-right { text-align: right; }
+.synthese-session {
+  font-family: var(--font-head); font-size: 28px; font-weight: 800;
+  color: var(--blue-light); line-height: 1;
+}
+.synthese-session-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; margin-top: 4px; }
+.synthese-option {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgba(6,182,212,.3);
+  background: rgba(6,182,212,.08);
+  padding: 4px 14px; border-radius: 100px;
+  margin-top: 8px;
+}
+
+/* TABLE WRAPPER */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+.synthese-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 900px;
+}
+.synthese-table th, .synthese-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border2);
+  border-right: 1px solid var(--border2);
+  vertical-align: middle;
+  text-align: left;
+}
+.synthese-table th:last-child, .synthese-table td:last-child { border-right: none; }
+.synthese-table tr:last-child td { border-bottom: none; }
+
+/* Header rows */
+.synthese-table thead tr:first-child th {
+  background: rgba(59,130,246,.12);
+  font-family: var(--font-head);
+  font-size: 11px; font-weight: 700;
+  color: var(--blue-light);
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 16px 14px;
+}
+.th-competence {
+  background: rgba(59,130,246,.07) !important;
+  font-size: 10px !important;
+  color: var(--muted2) !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4;
+  vertical-align: top !important;
+}
+
+/* Section rows (category headers) */
+.synthese-table .row-section td {
+  background: rgba(139,92,246,.07);
+  font-family: var(--font-head);
+  font-size: 11px; font-weight: 700;
+  color: var(--purple);
+  letter-spacing: .1em; text-transform: uppercase;
+  border-bottom: 1px solid rgba(139,92,246,.15);
+}
+
+/* Regular data rows */
+.synthese-table tbody tr:not(.row-section) {
+  transition: background .15s;
+}
+.synthese-table tbody tr:not(.row-section):hover { background: rgba(255,255,255,.025); }
+
+.cell-realisation {
+  color: var(--text);
+  font-weight: 500;
+  max-width: 240px;
+}
+.cell-periode {
+  color: var(--cyan);
+  font-size: 11px;
+  white-space: nowrap;
+  font-family: monospace;
+}
+.cell-check {
+  text-align: center !important;
+}
+.check-yes {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px;
+  background: rgba(16,185,129,.15);
+  border: 1px solid rgba(16,185,129,.4);
+  border-radius: 6px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Competence column headers (abbreviated) */
+.col-comp {
+  width: 70px;
+  text-align: center !important;
+}
+
+/* URL row */
+.url-row {
+  background: rgba(6,182,212,.04);
+  border-top: 1px solid rgba(6,182,212,.15) !important;
+}
+.url-row td { color: var(--muted); font-size: 11px; }
+.url-row a { color: var(--cyan); text-decoration: none; }
+.url-row a:hover { text-decoration: underline; }
+
+/* Legend */
+.synthese-legend {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted2); }
+
+/* Competence abbreviated labels for column headers */
+.comp-abbrev {
+  font-family: var(--font-head);
+  font-size: 10px; font-weight: 700;
+  color: var(--blue-light);
+  letter-spacing: 0;
+  display: block;
+  margin-bottom: 4px;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .ccna-grid, .contact-grid { grid-template-columns: 1fr; }
+  .synthese-header { grid-template-columns: 1fr; }
+  .synthese-header-right { text-align: left; }
 }
 @media (max-width: 700px) {
   nav { padding: 0 16px; }
@@ -391,6 +554,7 @@ footer span { color: var(--blue-light); }
     <a href="#certifications">CCNA</a>
     <a href="#experiences">Expériences</a>
     <a href="#formation">Formation</a>
+    <a href="#synthese">Épreuve E5</a>
     <a href="#contact">Contact</a>
   </div>
   <a href="mailto:z.mellouk@lprs.fr" class="nav-cta">✉ Me contacter</a>
@@ -708,11 +872,270 @@ footer span { color: var(--blue-light); }
   </section>
 </div>
 
+<hr class="divider"/>
+
+<!-- TABLEAU DE SYNTHÈSE E5 -->
+<section id="synthese" class="synthese-section">
+  <div class="wrap">
+    <div style="padding: 88px 0" class="fi">
+      <div class="sec-label">05 · Épreuve E5 — BTS SIO</div>
+      <h2>Tableau de synthèse des réalisations</h2>
+
+      <!-- Header info -->
+      <div class="synthese-header">
+        <div class="synthese-header-left">
+          <div class="synthese-header-title">BTS Services Informatiques aux Organisations</div>
+          <div class="synthese-header-name">MELLOUK Zakaria</div>
+          <div class="synthese-header-info">
+            N° candidat : 02247822156 &nbsp;·&nbsp; Lycée Robert Schuman
+          </div>
+          <div style="margin-top:10px">
+            <span class="synthese-option">✦ Option SISR</span>
+          </div>
+          <div style="margin-top: 10px; font-size: 12px; color: var(--muted);">
+            Portfolio : <a href="https://zakariamellouk.github.io/portfolio/" target="_blank" style="color:var(--cyan); text-decoration:none;">zakariamellouk.github.io/portfolio/</a>
+          </div>
+        </div>
+        <div class="synthese-header-right">
+          <div class="synthese-session">2026</div>
+          <div class="synthese-session-label">Session</div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrapper">
+        <table class="synthese-table">
+          <thead>
+            <tr>
+              <th rowspan="2" style="min-width:230px">Réalisations professionnelles</th>
+              <th rowspan="2" style="min-width:120px; white-space:nowrap">Période</th>
+              <th colspan="6" style="text-align:center">Compétences mises en œuvre</th>
+            </tr>
+            <tr>
+              <th class="th-competence col-comp">
+                <span class="comp-abbrev">C1</span>
+                Gérer le patrimoine informatique
+              </th>
+              <th class="th-competence col-comp">
+                <span class="comp-abbrev">C2</span>
+                Répondre aux incidents et demandes
+              </th>
+              <th class="th-competence col-comp">
+                <span class="comp-abbrev">C3</span>
+                Développer la présence en ligne
+              </th>
+              <th class="th-competence col-comp">
+                <span class="comp-abbrev">C4</span>
+                Travailler en mode projet
+              </th>
+              <th class="th-competence col-comp">
+                <span class="comp-abbrev">C5</span>
+                Mettre à dispo un service informatique
+              </th>
+              <th class="th-competence col-comp">
+                <span class="comp-abbrev">C6</span>
+                Organiser son développement professionnel
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- 1ère année BTS - Formation -->
+            <tr class="row-section">
+              <td colspan="8">📚 Réalisations en cours de formation — 1ère année de BTS</td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Projet 1 — Réalisation d'un site aéroport</td>
+              <td class="cell-periode">01/03/25 → 30/04/25</td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Réalisation de son portfolio</td>
+              <td class="cell-periode">01/02/25 → 30/04/25</td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+
+            <!-- 2ème année BTS - Formation -->
+            <tr class="row-section">
+              <td colspan="8">📚 Réalisations en cours de formation — 2ème année de BTS</td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Mise en place d'un serveur AD primaire, DHCP, DNS</td>
+              <td class="cell-periode">25/09/25</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Mise en place d'un pare-feu (PfSense)</td>
+              <td class="cell-periode">02/09/25</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Création de la zone DMZ</td>
+              <td class="cell-periode">13/11/25</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Installation d'une solution de ticketing (GLPI)</td>
+              <td class="cell-periode">16/10/26</td>
+              <td class="cell-check"></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Solution de chiffrement (Bitlocker)</td>
+              <td class="cell-periode">08/01/26</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Installation d'un gestionnaire de mots de passe (Vaultwarden)</td>
+              <td class="cell-periode">19/02/26</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+
+            <!-- Stage 1ère année -->
+            <tr class="row-section">
+              <td colspan="8">🏢 Réalisations en milieu professionnel — 1ère année (CBKI Telecom)</td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Stage 1ère année — Support utilisateur</td>
+              <td class="cell-periode">19/05/25 → 20/06/25</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Stage 1ère année — Préparation de PC</td>
+              <td class="cell-periode">19/05/25 → 20/06/25</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Stage 1ère année — Installation de Windows 11</td>
+              <td class="cell-periode">19/05/25 → 20/06/26</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+
+            <!-- Stage 2ème année -->
+            <tr class="row-section">
+              <td colspan="8">🏢 Réalisations en milieu professionnel — 2ème année</td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Stage 2ème année — AD (Active Directory)</td>
+              <td class="cell-periode">01/09/25 → 31/03/26</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Stage 2ème année — Iperius Sauvegarde</td>
+              <td class="cell-periode">01/09/25 → 31/03/26</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Stage 2ème année — Switching</td>
+              <td class="cell-periode">01/09/25 → 31/03/26</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+            <tr>
+              <td class="cell-realisation">Stage 2ème année — Accès Point / Point d'Accès Wi-Fi</td>
+              <td class="cell-periode">01/09/25 → 31/03/26</td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"><span class="check-yes">✓</span></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+              <td class="cell-check"></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Legend -->
+      <div class="synthese-legend">
+        <div class="legend-item"><span class="check-yes">✓</span> Compétence mobilisée</div>
+        <div class="legend-item" style="color:var(--muted); font-size:11px">
+          <span style="color:var(--blue-light); font-weight:700">C1</span> Gérer le patrimoine informatique &nbsp;·&nbsp;
+          <span style="color:var(--blue-light); font-weight:700">C2</span> Incidents &nbsp;·&nbsp;
+          <span style="color:var(--blue-light); font-weight:700">C3</span> Présence en ligne &nbsp;·&nbsp;
+          <span style="color:var(--blue-light); font-weight:700">C4</span> Mode projet &nbsp;·&nbsp;
+          <span style="color:var(--blue-light); font-weight:700">C5</span> Service informatique &nbsp;·&nbsp;
+          <span style="color:var(--blue-light); font-weight:700">C6</span> Développement professionnel
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <div class="wrap">
   <section id="contact" class="fi">
     <div class="contact-wrap">
-      <div class="sec-label">05 · Contact</div>
+      <div class="sec-label">06 · Contact</div>
       <h2 style="margin-bottom:8px">Travaillons ensemble</h2>
       <p style="font-size:14px;color:var(--muted2);max-width:480px">
         Je recherche une alternance ou des opportunités en réseaux et infrastructure IT.
@@ -737,7 +1160,7 @@ footer span { color: var(--blue-light); }
 </div>
 
 <footer>
-  Portfolio de <span>Zakaria Mellouk</span> · BTS SIO SISR · Certifié <span>CCNA 1 &amp; 2</span> · 2025
+  Portfolio de <span>Zakaria Mellouk</span> · BTS SIO SISR · Certifié <span>CCNA 1 &amp; 2</span> · Session 2026
 </footer>
 
 <script>
